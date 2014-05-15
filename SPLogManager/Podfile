@@ -1,0 +1,16 @@
+platform :ios, :deployment_target => '7.0'
+
+# Networking
+
+# Model
+
+# Debug
+pod "NSLogger"
+pod 'CocoaLumberjack'
+
+# UI
+
+# Testing
+target :SPLogManagerTests, :exclusive => true do
+   pod 'Kiwi/XCTest'
+end
