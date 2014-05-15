@@ -60,7 +60,7 @@ static Logger *_DDNSLogger_logger = nil;
 
 - (void)setupWithBonjourServiceName:(NSString *)serviceName
 {
-    LoggerSetupBonjour(_DDNSLogger_logger, NULL, (CFStringRef)serviceName);
+    LoggerSetupBonjour(_DDNSLogger_logger, NULL, (__bridge CFStringRef)serviceName);
 }
 
 - (void)logMessage:(DDLogMessage *)logMessage
@@ -89,6 +89,16 @@ static Logger *_DDNSLogger_logger = nil;
 	LogMessageF(logMessage->file, logMessage->lineNumber, logMessage->function, [logMessage fileName], 
                                 nsloggerLogLevel, @"%@", logMsg);
     }
+}
+
+- (void)willRemoveLogger
+{
+    LoggerStop(_DDNSLogger_logger);
+}
+
+- (void)flush
+{
+    LoggerFlush(_DDNSLogger_logger, NO);
 }
 
 - (NSString *)loggerName
