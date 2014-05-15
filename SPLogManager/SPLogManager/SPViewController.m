@@ -7,6 +7,7 @@
 //
 
 #import "SPViewController.h"
+#import "SPLogManager.h"
 
 @interface SPViewController ()
 
@@ -26,4 +27,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)testLogPrint:(id)sender {
+    DDLogError(@"%@: Error", THIS_FILE);
+    DDLogWarn(@"%@: Warn", THIS_FILE);
+    DDLogInfo(@"%@: Info", THIS_FILE);
+    DDLogDebug(@"%@: Debug", THIS_FILE);
+    DDLogVerbose(@"%@: Verbose", THIS_FILE);
+}
 @end

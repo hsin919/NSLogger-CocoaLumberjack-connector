@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SPViewController : UIViewController
+- (IBAction)testLogPrint:(id)sender;
 
 @end

@@ -7,12 +7,16 @@
 //
 
 #import "SPAppDelegate.h"
+#import "SPLogManager.h"
 
 @implementation SPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [[SPLogManager getManager] loadConfig];
+    [[SPLogManager getManager] setLogLevel:SP_LOG_DEBUG];
+    [[SPLogManager getManager] setTTYDebug:YES];
+    [[SPLogManager getManager] setASLDebug:YES];
     return YES;
 }
 							
