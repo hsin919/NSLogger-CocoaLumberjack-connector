@@ -14,7 +14,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[SPLogManager getManager] loadConfig];
-    [[SPLogManager getManager] setLogLevel:SP_LOG_DEBUG];
+    
     [[SPLogManager getManager] setTTYDebug:YES];
     [[SPLogManager getManager] setASLDebug:YES];
     return YES;

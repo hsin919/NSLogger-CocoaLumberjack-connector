@@ -21,7 +21,8 @@ typedef enum {
     SP_LOG_WARN,
     SP_LOG_INFO,
     SP_LOG_DEBUG,
-    SP_LOG_ALL
+    SP_LOG_ALL,
+    SP_LOG_LEVEL_COUNT
 } SP_LOG_LEVEL;
 
 @interface SPLogManager : NSObject
@@ -29,6 +30,8 @@ typedef enum {
 +(SPLogManager *)getManager;
 
 -(void)loadConfig;
+
+-(SP_LOG_LEVEL)getLogLevel;
 -(void)setLogLevel:(SP_LOG_LEVEL)level;
 
 -(void)setFileLogDebug:(BOOL)enable;
@@ -36,4 +39,6 @@ typedef enum {
 -(void)setASLDebug:(BOOL)enable;
 // Enable output for xcode console
 -(void)setTTYDebug:(BOOL)enable;
+
+- (NSString*)formatTypeToString:(SP_LOG_LEVEL)formatType;
 @end

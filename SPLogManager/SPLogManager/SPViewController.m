@@ -18,7 +18,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    int logLevel = [[SPLogManager getManager] getLogLevel];
+	[self.logLevelPicker selectRow:logLevel inComponent:0 animated:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -33,5 +35,25 @@
     DDLogInfo(@"%@: Info", THIS_FILE);
     DDLogDebug(@"%@: Debug", THIS_FILE);
     DDLogVerbose(@"%@: Verbose", THIS_FILE);
+}
+#pragma mark - UIPickerViewDataSource
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return SP_LOG_LEVEL_COUNT;
+}
+
+#pragma mark - UIPickerViewDelegate
+- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [[SPLogManager getManager] formatTypeToString:row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    [[SPLogManager getManager] setLogLevel:row];
 }
 @end

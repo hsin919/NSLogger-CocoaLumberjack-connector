@@ -24,6 +24,8 @@ int ddLogLevel;
 @property (nonatomic, strong) DDASLLogger* aslLogger;
 @property (nonatomic, strong) DDTTYLogger* ttyLogger;
 
+@property NSDictionary *logTypeValueDict;
+
 @end
 @implementation SPLogManager
 
@@ -37,6 +39,15 @@ static SPLogManager *instance = nil;
         self.fileLogger = nil;
         self.aslLogger = nil;
         self.ttyLogger = nil;
+       
+        self.logTypeValueDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [NSNumber numberWithInt:LOG_LEVEL_OFF], [NSNumber numberWithInt:SP_LOG_OFF],
+                                [NSNumber numberWithInt:LOG_LEVEL_ERROR], [NSNumber numberWithInt:SP_LOG_ERROR],
+                                [NSNumber numberWithInt:LOG_LEVEL_WARN], [NSNumber numberWithInt:SP_LOG_WARN],
+                                [NSNumber numberWithInt:LOG_LEVEL_INFO], [NSNumber numberWithInt:SP_LOG_INFO],
+                                [NSNumber numberWithInt:LOG_LEVEL_DEBUG], [NSNumber numberWithInt:SP_LOG_DEBUG],
+                                [NSNumber numberWithInt:LOG_LEVEL_VERBOSE], [NSNumber numberWithInt:SP_LOG_ALL]
+                                 ,nil];
     }
 	return self;
 }
@@ -107,38 +118,25 @@ static SPLogManager *instance = nil;
     }
 }
 
+-(SP_LOG_LEVEL)getLogLevel
+{
+    NSArray *temp = [self.logTypeValueDict allKeysForObject:[NSNumber numberWithInt:ddLogLevel]];
+    SP_LOG_LEVEL level = [[temp lastObject] intValue];
+    return level;
+}
+
 - (int)getMappingLevel:(SP_LOG_LEVEL)level
 {
-    switch (level) {
-        case SP_LOG_OFF:
-            return LOG_LEVEL_OFF;
-            break;
-        case SP_LOG_ERROR:
-            return LOG_LEVEL_ERROR;
-            break;
-        case SP_LOG_WARN:
-            return LOG_LEVEL_WARN;
-            break;
-        case SP_LOG_INFO:
-            return LOG_LEVEL_INFO;
-            break;
-        case SP_LOG_DEBUG:
-            return LOG_LEVEL_DEBUG;
-            break;
-        case SP_LOG_ALL:
-            return LOG_LEVEL_VERBOSE;
-            break;
-        default:
-            break;
-    }
+    int ddLevel = [[self.logTypeValueDict objectForKey:[NSNumber numberWithInt:level]] intValue];
+    return ddLevel;
 }
 
 - (void)loadConfig
 {
-    NSNumber *logLevel = [[NSUserDefaults standardUserDefaults] objectForKey:LOG_LEVEL_KEY];
+    int logLevel = [[NSUserDefaults standardUserDefaults] integerForKey:LOG_LEVEL_KEY];
     if (logLevel)
     {
-        ddLogLevel = [logLevel intValue];
+        ddLogLevel = logLevel;
         [self printLogLevel];
     }
     
@@ -228,6 +226,34 @@ static SPLogManager *instance = nil;
         [DDLog removeLogger:[DDTTYLogger sharedInstance]];
         self.ttyLogger = nil;
     }
+}
+
+- (NSString*)formatTypeToString:(SP_LOG_LEVEL)formatType {
+    NSString *result = nil;
+    switch(formatType) {
+        case SP_LOG_OFF:
+            result = @"SP_LOG_OFF";
+            break;
+        case SP_LOG_ERROR:
+            result = @"SP_LOG_ERROR";
+            break;
+        case SP_LOG_WARN:
+            result = @"SP_LOG_WARN";
+            break;
+        case SP_LOG_INFO:
+            result = @"SP_LOG_INFO";
+            break;
+        case SP_LOG_DEBUG:
+            result = @"SP_LOG_DEBUG";
+            break;
+        case SP_LOG_ALL:
+            result = @"SP_LOG_ALL";
+            break;
+        default:
+            result = @"Unexpeted type";
+    }
+    
+    return result;
 }
 
 -(void) dealloc

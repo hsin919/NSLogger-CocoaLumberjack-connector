@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface SPViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIPickerView *logLevelPicker;
+
 - (IBAction)testLogPrint:(id)sender;
+
 
 @end
