@@ -25,6 +25,7 @@ int ddLogLevel;
 @property (nonatomic, strong) DDTTYLogger* ttyLogger;
 
 @property NSDictionary *logTypeValueDict;
+@property NSDictionary *logTypeStringDict;
 
 @end
 @implementation SPLogManager
@@ -48,6 +49,15 @@ static SPLogManager *instance = nil;
                                 [NSNumber numberWithInt:LOG_LEVEL_DEBUG], [NSNumber numberWithInt:SP_LOG_DEBUG],
                                 [NSNumber numberWithInt:LOG_LEVEL_VERBOSE], [NSNumber numberWithInt:SP_LOG_ALL]
                                  ,nil];
+        
+        self.logTypeStringDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  @"SP_LOG_OFF", [NSNumber numberWithInt:SP_LOG_OFF],
+                                  @"SP_LOG_ERROR", [NSNumber numberWithInt:SP_LOG_ERROR],
+                                  @"SP_LOG_WARN", [NSNumber numberWithInt:SP_LOG_WARN],
+                                  @"SP_LOG_INFO", [NSNumber numberWithInt:SP_LOG_INFO],
+                                  @"SP_LOG_DEBUG", [NSNumber numberWithInt:SP_LOG_DEBUG],
+                                  @"SP_LOG_ALL", [NSNumber numberWithInt:SP_LOG_ALL]
+                                  ,nil];
     }
 	return self;
 }
@@ -229,31 +239,7 @@ static SPLogManager *instance = nil;
 }
 
 - (NSString*)formatTypeToString:(SP_LOG_LEVEL)formatType {
-    NSString *result = nil;
-    switch(formatType) {
-        case SP_LOG_OFF:
-            result = @"SP_LOG_OFF";
-            break;
-        case SP_LOG_ERROR:
-            result = @"SP_LOG_ERROR";
-            break;
-        case SP_LOG_WARN:
-            result = @"SP_LOG_WARN";
-            break;
-        case SP_LOG_INFO:
-            result = @"SP_LOG_INFO";
-            break;
-        case SP_LOG_DEBUG:
-            result = @"SP_LOG_DEBUG";
-            break;
-        case SP_LOG_ALL:
-            result = @"SP_LOG_ALL";
-            break;
-        default:
-            result = @"Unexpeted type";
-    }
-    
-    return result;
+    return [self.logTypeStringDict objectForKey:[NSNumber numberWithInt:formatType]];
 }
 
 -(void) dealloc

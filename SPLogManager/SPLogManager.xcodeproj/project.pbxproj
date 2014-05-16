@@ -24,6 +24,7 @@
 		D81C6CBC1924B0B20062E29A /* SPLogManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D81C6CBB1924B0B20062E29A /* SPLogManagerTests.m */; };
 		D81C6CC71924B16D0062E29A /* DDNSLoggerLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D81C6CC61924B16D0062E29A /* DDNSLoggerLogger.m */; };
 		D81C6CCA1924B3AD0062E29A /* SPLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D81C6CC91924B3AD0062E29A /* SPLogManager.m */; };
+		D8A58C2D1926193300FD2DF5 /* CompressingLogFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A58C2C1926193300FD2DF5 /* CompressingLogFileManager.m */; };
 		E17195C2477F4AA496B59271 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AE90D32FE17461AB76249ED /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,8 @@
 		D81C6CC61924B16D0062E29A /* DDNSLoggerLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDNSLoggerLogger.m; path = ../../DDNSLoggerLogger.m; sourceTree = "<group>"; };
 		D81C6CC81924B3AD0062E29A /* SPLogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPLogManager.h; sourceTree = SOURCE_ROOT; };
 		D81C6CC91924B3AD0062E29A /* SPLogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPLogManager.m; sourceTree = SOURCE_ROOT; };
+		D8A58C2B1926193300FD2DF5 /* CompressingLogFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompressingLogFileManager.h; sourceTree = "<group>"; };
+		D8A58C2C1926193300FD2DF5 /* CompressingLogFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompressingLogFileManager.m; sourceTree = "<group>"; };
 		E0FBF66D084340B68077E20B /* libPods-SPLogManagerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SPLogManagerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -130,6 +133,8 @@
 		D81C6C961924B0B10062E29A /* SPLogManager */ = {
 			isa = PBXGroup;
 			children = (
+				D8A58C2B1926193300FD2DF5 /* CompressingLogFileManager.h */,
+				D8A58C2C1926193300FD2DF5 /* CompressingLogFileManager.m */,
 				D81C6CC81924B3AD0062E29A /* SPLogManager.h */,
 				D81C6CC91924B3AD0062E29A /* SPLogManager.m */,
 				D81C6CC51924B16D0062E29A /* DDNSLoggerLogger.h */,
@@ -342,6 +347,7 @@
 				D81C6C9D1924B0B10062E29A /* main.m in Sources */,
 				D81C6CA71924B0B10062E29A /* SPViewController.m in Sources */,
 				D81C6CCA1924B3AD0062E29A /* SPLogManager.m in Sources */,
+				D8A58C2D1926193300FD2DF5 /* CompressingLogFileManager.m in Sources */,
 				D81C6CC71924B16D0062E29A /* DDNSLoggerLogger.m in Sources */,
 				D81C6CA11924B0B10062E29A /* SPAppDelegate.m in Sources */,
 			);
