@@ -10,6 +10,7 @@
 #import "DDFileLogger.h"
 #import "DDTTYLogger.h"
 #import "DDASLLogger.h"
+#import "CompressingLogFileManager.h"
 
 #define LOG_LEVEL_KEY @"prefsLogLevel"
 #define LOG_DEBUG_ASL_KEY @"LOG_DEBUG_ASL_KEY"
@@ -175,10 +176,19 @@ static SPLogManager *instance = nil;
 
 - (void)initFileLogger
 {
-    self.fileLogger = [[DDFileLogger alloc] init];
-    _fileLogger.rollingFrequency = 60 * 60 * 24;
-    _fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
-    _fileLogger.maximumFileSize = 1024 * 500; // 500KB;
+    CompressingLogFileManager *logFileManager = [[CompressingLogFileManager alloc] init];
+    
+    self.fileLogger = [[DDFileLogger alloc] initWithLogFileManager:logFileManager];
+    
+    _fileLogger.maximumFileSize  = 1024 * 1;  // 1 KB
+    _fileLogger.rollingFrequency =   60 * 1;  // 1 Minute
+    
+    _fileLogger.logFileManager.maximumNumberOfLogFiles = 4;
+    
+    //self.fileLogger = [[DDFileLogger alloc] init];
+    //_fileLogger.rollingFrequency = 60 * 60 * 24;
+    //_fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
+    //_fileLogger.maximumFileSize = 1024 * 500; // 500KB;
     [DDLog addLogger:_fileLogger];
 }
 

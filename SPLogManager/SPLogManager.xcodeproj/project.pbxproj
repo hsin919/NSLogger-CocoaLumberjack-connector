@@ -25,6 +25,7 @@
 		D81C6CC71924B16D0062E29A /* DDNSLoggerLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D81C6CC61924B16D0062E29A /* DDNSLoggerLogger.m */; };
 		D81C6CCA1924B3AD0062E29A /* SPLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D81C6CC91924B3AD0062E29A /* SPLogManager.m */; };
 		D8A58C2D1926193300FD2DF5 /* CompressingLogFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A58C2C1926193300FD2DF5 /* CompressingLogFileManager.m */; };
+		D8A58C2F19261B5700FD2DF5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8A58C2E19261B5700FD2DF5 /* libz.dylib */; };
 		E17195C2477F4AA496B59271 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AE90D32FE17461AB76249ED /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		D81C6CC91924B3AD0062E29A /* SPLogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPLogManager.m; sourceTree = SOURCE_ROOT; };
 		D8A58C2B1926193300FD2DF5 /* CompressingLogFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompressingLogFileManager.h; sourceTree = "<group>"; };
 		D8A58C2C1926193300FD2DF5 /* CompressingLogFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompressingLogFileManager.m; sourceTree = "<group>"; };
+		D8A58C2E19261B5700FD2DF5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E0FBF66D084340B68077E20B /* libPods-SPLogManagerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SPLogManagerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -75,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8A58C2F19261B5700FD2DF5 /* libz.dylib in Frameworks */,
 				D81C6C931924B0B10062E29A /* CoreGraphics.framework in Frameworks */,
 				D81C6C951924B0B10062E29A /* UIKit.framework in Frameworks */,
 				D81C6C911924B0B10062E29A /* Foundation.framework in Frameworks */,
@@ -120,6 +123,7 @@
 		D81C6C8F1924B0B10062E29A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D8A58C2E19261B5700FD2DF5 /* libz.dylib */,
 				D81C6C901924B0B10062E29A /* Foundation.framework */,
 				D81C6C921924B0B10062E29A /* CoreGraphics.framework */,
 				D81C6C941924B0B10062E29A /* UIKit.framework */,
