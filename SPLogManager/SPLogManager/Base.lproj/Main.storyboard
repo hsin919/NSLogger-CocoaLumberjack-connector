@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,12 +17,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BgP-hM-mkw">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BgP-hM-mkw">
                                 <rect key="frame" x="57" y="20" width="207" height="149"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="207" id="F3b-Po-ORB"/>
+                                    <constraint firstAttribute="width" secondItem="BgP-hM-mkw" secondAttribute="height" multiplier="207:149" id="Nil-wQ-iDq"/>
                                 </constraints>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -39,14 +40,44 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="xlf-x6-Y5w"/>
                                 </connections>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rg6-vO-5e6">
+                                <rect key="frame" x="57" y="210" width="97" height="145"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="Wpl-QU-dLh"/>
+                                    <constraint firstAttribute="height" constant="145" id="mQb-gZ-jJg"/>
+                                </constraints>
+                                <state key="normal" title="Email">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="emailLog:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="bEr-Xc-n5V"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6i3-U2-zGl">
+                                <rect key="frame" x="162" y="210" width="102" height="145"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Email all log">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="emailAllLog:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="50y-Tm-dG9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BgP-hM-mkw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="57" id="1M9-QJ-eeh"/>
-                            <constraint firstAttribute="trailing" secondItem="BgP-hM-mkw" secondAttribute="trailing" constant="56" id="9Ba-B1-scd"/>
+                            <constraint firstItem="rg6-vO-5e6" firstAttribute="top" secondItem="6i3-U2-zGl" secondAttribute="top" id="0bI-ue-VRF"/>
+                            <constraint firstItem="6i3-U2-zGl" firstAttribute="top" secondItem="BgP-hM-mkw" secondAttribute="bottom" constant="41" id="9JV-tF-FQy"/>
+                            <constraint firstItem="rg6-vO-5e6" firstAttribute="bottom" secondItem="6i3-U2-zGl" secondAttribute="bottom" id="I9d-v2-QFN"/>
+                            <constraint firstItem="BgP-hM-mkw" firstAttribute="trailing" secondItem="6i3-U2-zGl" secondAttribute="trailing" id="JDo-eP-Tf3"/>
+                            <constraint firstItem="BgP-hM-mkw" firstAttribute="leading" secondItem="rg6-vO-5e6" secondAttribute="leading" id="S2N-5P-hfg"/>
+                            <constraint firstAttribute="trailing" secondItem="BgP-hM-mkw" secondAttribute="trailing" constant="56" id="XIi-L7-PEf"/>
+                            <constraint firstItem="BgP-hM-mkw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="57" id="aZe-2V-3rL"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Qof-AU-Wxc" secondAttribute="bottom" constant="20" id="caL-pp-oBf"/>
                             <constraint firstAttribute="trailing" secondItem="Qof-AU-Wxc" secondAttribute="trailing" id="imB-Ld-qzQ"/>
-                            <constraint firstItem="BgP-hM-mkw" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="v0h-t5-zdx"/>
+                            <constraint firstItem="BgP-hM-mkw" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="20" symbolic="YES" id="nlq-YS-G6k"/>
+                            <constraint firstItem="6i3-U2-zGl" firstAttribute="leading" secondItem="rg6-vO-5e6" secondAttribute="trailing" constant="8" symbolic="YES" id="vET-sg-e2z"/>
                             <constraint firstItem="Qof-AU-Wxc" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="zy9-oc-Wag"/>
                         </constraints>
                     </view>

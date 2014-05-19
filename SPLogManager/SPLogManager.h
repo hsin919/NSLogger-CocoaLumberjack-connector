@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "DDLog.h"
+#import "DDFileLogger.h"
+#import "DDTTYLogger.h"
+#import "DDASLLogger.h"
+#import "CompressingLogFileManager.h"
 
 extern int ddLogLevel;
 
@@ -39,6 +43,9 @@ typedef enum {
 -(void)setASLDebug:(BOOL)enable;
 // Enable output for xcode console
 -(void)setTTYDebug:(BOOL)enable;
+
+- (DDLogFileInfo *)getCurrentLogFileInfo;
+- (NSData *)getAllLog;
 
 - (NSString*)formatTypeToString:(SP_LOG_LEVEL)formatType;
 @end

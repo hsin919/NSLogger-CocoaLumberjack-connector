@@ -36,6 +36,52 @@
     DDLogDebug(@"%@: Debug", THIS_FILE);
     DDLogVerbose(@"%@: Verbose", THIS_FILE);
 }
+
+- (void)emailErrorLog:(DDLogFileInfo *)currentLogInfo allLogData:(NSData *)allData
+{
+    if ([MFMailComposeViewController canSendMail]) {
+        
+        MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+        mailViewController.mailComposeDelegate = self;
+        
+        if(allData == nil)
+        {
+            [mailViewController addAttachmentData:[NSData dataWithContentsOfFile:currentLogInfo.filePath] mimeType:@"text/plain" fileName:currentLogInfo.fileName];
+        }
+        else
+        {
+            [mailViewController addAttachmentData:allData mimeType:@"text/plain" fileName:currentLogInfo.fileName];
+        }
+        
+        [mailViewController setSubject:currentLogInfo.fileName];
+        
+        [self presentViewController:mailViewController animated:NO completion:nil];
+    }
+}
+
+- (IBAction)emailLog:(id)sender {
+    DDLogFileInfo *currentLogInfo = [[SPLogManager getManager] getCurrentLogFileInfo];
+    if(currentLogInfo != nil) 
+    {
+        [self emailErrorLog:currentLogInfo allLogData:nil];
+    }
+}
+
+- (IBAction)emailAllLog:(id)sender {
+    NSData *allData = [[SPLogManager getManager] getAllLog];
+    DDLogFileInfo *currentLogInfo = [[SPLogManager getManager] getCurrentLogFileInfo];
+    if(currentLogInfo != nil && allData != nil)
+    {
+        [self emailErrorLog:currentLogInfo allLogData:allData];
+    }
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
+
 #pragma mark - UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {

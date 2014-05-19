@@ -7,10 +7,6 @@
 //
 
 #import "SPLogManager.h"
-#import "DDFileLogger.h"
-#import "DDTTYLogger.h"
-#import "DDASLLogger.h"
-#import "CompressingLogFileManager.h"
 
 #define LOG_LEVEL_KEY @"prefsLogLevel"
 #define LOG_DEBUG_ASL_KEY @"LOG_DEBUG_ASL_KEY"
@@ -246,6 +242,32 @@ static SPLogManager *instance = nil;
         [DDLog removeLogger:[DDTTYLogger sharedInstance]];
         self.ttyLogger = nil;
     }
+}
+
+- (DDLogFileInfo *)getCurrentLogFileInfo
+{
+    NSArray *sortedLogFileInfos = [self.fileLogger.logFileManager sortedLogFileInfos];
+    NSLog(@">>> sortedLogFileInfos%@", sortedLogFileInfos);
+    if([sortedLogFileInfos count] > 0)
+    {
+        DDLogFileInfo *logFileInfo = [sortedLogFileInfos objectAtIndex:0];
+        //NSData *fileData = [NSData dataWithContentsOfFile:logFileInfo.filePath];
+        return logFileInfo;
+    }
+    return nil;
+}
+
+- (NSData *)getAllLog
+{
+    NSMutableData *errorLogData = [NSMutableData data];
+    
+    NSArray *sortedLogFileInfos = [self.fileLogger.logFileManager sortedLogFileInfos];
+    for (int i = 0; i < MIN(sortedLogFileInfos.count, self.fileLogger.logFileManager.maximumNumberOfLogFiles); i++) {
+        DDLogFileInfo *logFileInfo = [sortedLogFileInfos objectAtIndex:i];
+        NSData *fileData = [NSData dataWithContentsOfFile:logFileInfo.filePath];
+        [errorLogData appendData:fileData];
+    }
+    return errorLogData;
 }
 
 - (NSString*)formatTypeToString:(SP_LOG_LEVEL)formatType {
