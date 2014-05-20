@@ -19,6 +19,8 @@
 {
     [super viewDidLoad];
     
+    [DDLog flushLog];
+    
     int logLevel = [[SPLogManager getManager] getLogLevel];
 	[self.logLevelPicker selectRow:logLevel inComponent:0 animated:NO];
 }
