@@ -13,7 +13,7 @@ typedef enum {
     SP_LOG_LEVEL_COUNT
 } SP_LOG_LEVEL; 
 ```
-You can also enable/disable DDTTYLogger, DDFileLogger, DDASLLogger, and [DDNSLoggerLogger](https://github.com/steipete/NSLogger-CocoaLumberjack-connector).
+You can also enable/disable DDTTYLogger, DDFileLogger, DDASLLogger, and [DDNSLoggerLogger](https://github.com/steipete/NSLogger-CocoaLumberjack-connector) dynamically.
 SPLogManager will remember your config automatically.
 
 # Requirements #
