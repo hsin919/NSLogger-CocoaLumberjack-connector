@@ -12,6 +12,7 @@
 #define LOG_DEBUG_ASL_KEY @"LOG_DEBUG_ASL_KEY"
 #define LOG_DEBUG_FILE_KEY @"LOG_DEBUG_FILE_KEY"
 #define LOG_DEBUG_TTY_KEY @"LOG_DEBUG_TTY_KEY"
+#define LOG_DEBUG_NSLOGGER_KEY @"LOG_DEBUG_NSLOGGER_KEY"
 
 int ddLogLevel;
 
@@ -20,6 +21,7 @@ int ddLogLevel;
 @property (nonatomic, strong) DDFileLogger* fileLogger;
 @property (nonatomic, strong) DDASLLogger* aslLogger;
 @property (nonatomic, strong) DDTTYLogger* ttyLogger;
+@property (nonatomic, strong) DDNSLoggerLogger* ddnsLogger;
 
 @property NSDictionary *logTypeValueDict;
 @property NSDictionary *logTypeStringDict;
@@ -37,6 +39,7 @@ static SPLogManager *instance = nil;
         self.fileLogger = nil;
         self.aslLogger = nil;
         self.ttyLogger = nil;
+        self.ddnsLogger = nil;
        
         self.logTypeValueDict = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [NSNumber numberWithInt:LOG_LEVEL_OFF], [NSNumber numberWithInt:SP_LOG_OFF],
@@ -98,6 +101,19 @@ static SPLogManager *instance = nil;
     }
 }
 
+- (void)loadDDNSConfig
+{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:LOG_DEBUG_NSLOGGER_KEY])
+    {
+        BOOL enable = [[NSUserDefaults standardUserDefaults] boolForKey:LOG_DEBUG_NSLOGGER_KEY];
+        [self setNetworkDebug:enable];
+    }
+    else
+    {
+        [self setNetworkDebug:DEFAULT_DDNS_DEBUG];
+    }
+}
+
 - (void)printLogLevel
 {
     switch (ddLogLevel) {
@@ -150,6 +166,7 @@ static SPLogManager *instance = nil;
     [self loadASLConfig];
     [self loadFileConfig];
     [self loadTTYConfig];
+    [self loadDDNSConfig];
 }
 
 -(void)saveLogLevel:(int)level
@@ -241,6 +258,26 @@ static SPLogManager *instance = nil;
     {
         [DDLog removeLogger:[DDTTYLogger sharedInstance]];
         self.ttyLogger = nil;
+    }
+}
+
+-(void)setNetworkDebug:(BOOL)enable
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:enable forKey:LOG_DEBUG_NSLOGGER_KEY];
+    if(enable)
+    {
+        if(_ddnsLogger == nil)
+        {
+            self.ddnsLogger = [DDNSLoggerLogger sharedInstance];
+            [_ddnsLogger setupWithBonjourServiceName:@"SPLogManagerServer"];
+            [DDLog addLogger:_ddnsLogger];
+        }
+    }
+    else
+    {
+        [DDLog removeLogger:[DDNSLoggerLogger sharedInstance]];
+        self.ddnsLogger = nil;
     }
 }
 

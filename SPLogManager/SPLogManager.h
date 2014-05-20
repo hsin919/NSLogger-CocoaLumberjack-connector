@@ -11,6 +11,7 @@
 #import "DDFileLogger.h"
 #import "DDTTYLogger.h"
 #import "DDASLLogger.h"
+#import "DDNSLoggerLogger.h"
 #import "CompressingLogFileManager.h"
 
 extern int ddLogLevel;
@@ -18,6 +19,7 @@ extern int ddLogLevel;
 #define DEFAULT_ASL_DEBUG NO
 #define DEFAULT_FILE_DEBUG NO
 #define DEFAULT_TTY_DEBUG YES
+#define DEFAULT_DDNS_DEBUG NO
 
 typedef enum {
     SP_LOG_OFF = 0,
@@ -43,6 +45,8 @@ typedef enum {
 -(void)setASLDebug:(BOOL)enable;
 // Enable output for xcode console
 -(void)setTTYDebug:(BOOL)enable;
+// Enable output for NSLogger
+-(void)setNetworkDebug:(BOOL)enable;
 
 - (DDLogFileInfo *)getCurrentLogFileInfo;
 - (NSData *)getAllLog;

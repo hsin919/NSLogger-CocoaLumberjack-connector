@@ -18,6 +18,8 @@
     [[SPLogManager getManager] setTTYDebug:YES];
     [[SPLogManager getManager] setASLDebug:YES];
     [[SPLogManager getManager] setFileLogDebug:YES];
+    [[SPLogManager getManager] setNetworkDebug:YES];
+    
     return YES;
 }
 							
