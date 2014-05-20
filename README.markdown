@@ -22,7 +22,7 @@ SPLogManager is an ARC object.
 * [cocoaPods](http://cocoapods.org) : Please run "pod install" before running SPLogManager sample.
 
 
-# Adding MBProgressHUD to your project #
+# Adding SPLogManager to your project #
 Add the following framework to your podfile.
 * [NSLogger](http://github.com/fpillet/NSLogger)
 * [CocoaLumberjack](http://github.com/robbiehanson/CocoaLumberjack)
