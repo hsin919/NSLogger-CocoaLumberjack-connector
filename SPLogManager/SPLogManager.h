@@ -21,6 +21,12 @@ extern int ddLogLevel;
 #define DEFAULT_TTY_DEBUG YES
 #define DEFAULT_DDNS_DEBUG NO
 
+@interface FileLogConfig : NSObject
+@property int maxFileNumber;
+@property int rollingFreq;  // in second
+@property int fileSize;
+@end
+
 typedef enum {
     SP_LOG_OFF = 0,
     SP_LOG_ERROR,
@@ -41,6 +47,8 @@ typedef enum {
 -(void)setLogLevel:(SP_LOG_LEVEL)level;
 
 -(void)setFileLogDebug:(BOOL)enable;
+- (void)setFileLogConfig:(FileLogConfig *)fileConfig;
+
 // Enable output for system console
 -(void)setASLDebug:(BOOL)enable;
 // Enable output for xcode console

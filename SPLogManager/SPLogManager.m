@@ -14,6 +14,8 @@
 #define LOG_DEBUG_TTY_KEY @"LOG_DEBUG_TTY_KEY"
 #define LOG_DEBUG_NSLOGGER_KEY @"LOG_DEBUG_NSLOGGER_KEY"
 
+#define LOG_DEBUG_FILE_CONFIG_KEY @"LOG_DEBUG_FILE_CONFIG_KEY"
+
 int ddLogLevel;
 
 @interface SPLogManager()
@@ -192,16 +194,17 @@ static SPLogManager *instance = nil;
     CompressingLogFileManager *logFileManager = [[CompressingLogFileManager alloc] init];
     
     self.fileLogger = [[DDFileLogger alloc] initWithLogFileManager:logFileManager];
-    
-    _fileLogger.maximumFileSize  = 1024 * 1;  // 1 KB
-    _fileLogger.rollingFrequency =   60 * 1;  // 1 Minute
-    
-    _fileLogger.logFileManager.maximumNumberOfLogFiles = 4;
-    
-    //self.fileLogger = [[DDFileLogger alloc] init];
-    //_fileLogger.rollingFrequency = 60 * 60 * 24;
-    //_fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
-    //_fileLogger.maximumFileSize = 1024 * 500; // 500KB;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    FileLogConfig* config = [NSKeyedUnarchiver unarchiveObjectWithData:[userDefaults objectForKey:LOG_DEBUG_FILE_CONFIG_KEY]];
+    if(config)
+    {
+        [self setFileLogConfig:config];
+    }
+    else
+    {
+        FileLogConfig *fileConfig = [[FileLogConfig alloc] init];
+        [self setFileLogConfig:fileConfig];
+    }
     [DDLog addLogger:_fileLogger];
 }
 
@@ -222,6 +225,17 @@ static SPLogManager *instance = nil;
         }
     }
 }
+
+- (void)setFileLogConfig:(FileLogConfig *)fileConfig
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:[NSKeyedArchiver archivedDataWithRootObject:fileConfig] forKey:LOG_DEBUG_FILE_CONFIG_KEY];
+    
+    self.fileLogger.maximumFileSize = fileConfig.fileSize;
+    self.fileLogger.logFileManager.maximumNumberOfLogFiles = fileConfig.maxFileNumber;
+    self.fileLogger.rollingFrequency = fileConfig.rollingFreq;
+}
+
 // Enable output for system console
 -(void)setASLDebug:(BOOL)enable
 {
@@ -322,6 +336,39 @@ static SPLogManager *instance = nil;
         instance = [[SPLogManager alloc] init];
     }
     return instance;
+}
+
+@end
+
+@implementation FileLogConfig
+
+- (id)init
+{
+	self= [super init];
+    if(self)
+    {
+        self.maxFileNumber = 4;
+        self.rollingFreq = 60 * 1;
+        self.fileSize = 1024 ;
+    }
+	return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    //Encode properties, other class variables, etc
+    [encoder encodeInt:self.maxFileNumber forKey:@"maxFileNumber"];
+    [encoder encodeInt:self.rollingFreq forKey:@"rollingFreq"];
+    [encoder encodeInt:self.fileSize forKey:@"fileSize"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    if((self = [super init])) {
+        //decode properties, other class vars
+        self.maxFileNumber = [decoder decodeIntForKey:@"maxFileNumber"];
+        self.rollingFreq = [decoder decodeIntForKey:@"rollingFreq"];
+        self.fileSize = [decoder decodeIntForKey:@"fileSize"];
+    }
+    return self;
 }
 
 @end
