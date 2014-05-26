@@ -1,8 +1,12 @@
 PODS:
-  - CocoaLumberjack (1.8.1):
+  - CocoaLumberjack (1.9.0):
+    - CocoaLumberjack/CLI
+    - CocoaLumberjack/Core
     - CocoaLumberjack/Extensions
-  - CocoaLumberjack/Core (1.8.1)
-  - CocoaLumberjack/Extensions (1.8.1):
+  - CocoaLumberjack/CLI (1.9.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Core (1.9.0)
+  - CocoaLumberjack/Extensions (1.9.0):
     - CocoaLumberjack/Core
   - Kiwi/ARC (2.2.4)
   - Kiwi/NonARC (2.2.4)
@@ -17,8 +21,8 @@ DEPENDENCIES:
   - NSLogger
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: 020378ec400d658923bf5887178394f65f052c90
-  Kiwi: d60d7498b640a16f58b01925fc3c8d7c4d809f66
-  NSLogger: 9607fdeafd0b09922c69615f99f127de45971b8f
+  CocoaLumberjack: 5766cdd1d0a24bcf15a133c6023747346bf786dd
+  Kiwi: c73667f2b84cbf36f1a3830267c5a4ae8dcbd8ba
+  NSLogger: c4df4b0208d724f244c05f1966b7402f14d7bf55
 
 COCOAPODS: 0.32.1

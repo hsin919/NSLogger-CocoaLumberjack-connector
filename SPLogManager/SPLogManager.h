@@ -21,6 +21,9 @@ extern int ddLogLevel;
 #define DEFAULT_TTY_DEBUG YES
 #define DEFAULT_DDNS_DEBUG NO
 
+/**
+ *  A class for file logger configuration wrapper.
+ */
 @interface FileLogConfig : NSObject
 @property int maxFileNumber;
 @property int rollingFreq;  // in second
@@ -37,6 +40,10 @@ typedef enum {
     SP_LOG_LEVEL_COUNT
 } SP_LOG_LEVEL;
 
+
+/**
+ *  OGLogManager can enable/disable DDTTYLogger , DDFileLogger , DDASLLogger , and DDNSLoggerLogger dynamically. OGLogManager will also remember previous debug configuration.
+ */
 @interface SPLogManager : NSObject
 
 +(SPLogManager *)getManager;
@@ -53,6 +60,11 @@ typedef enum {
  *  @return Log level type
  */
 -(SP_LOG_LEVEL)getLogLevel;
+/**
+ *  Dynamic log level setter.
+ *
+ *  @param level Log level
+ */
 -(void)setLogLevel:(SP_LOG_LEVEL)level;
 
 -(void)setFileLogDebug:(BOOL)enable;
