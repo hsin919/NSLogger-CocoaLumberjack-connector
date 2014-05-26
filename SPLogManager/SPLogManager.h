@@ -41,22 +41,64 @@ typedef enum {
 
 +(SPLogManager *)getManager;
 
+/**
+ *   Load previous log level, ASL logger, and other logger settings for you.
+ *   You can also skip loadConfig & setASLDebug, setTTYDebug, and setFileLogDebug manually everytime.
+ */
 -(void)loadConfig;
 
+/**
+ *  Get current log level
+ *
+ *  @return Log level type
+ */
 -(SP_LOG_LEVEL)getLogLevel;
 -(void)setLogLevel:(SP_LOG_LEVEL)level;
 
 -(void)setFileLogDebug:(BOOL)enable;
+/**
+ *  Set configuration for file logger. Default value are
+ *  Max File Number: 4
+ *  RollingFreq: 1 hr
+ *  FileSize: 500KB;
+ *
+ *  @param fileConfig Data wrapper for maxFileNumber, rollingFreq(in second), and fileSize.
+ */
 - (void)setFileLogConfig:(FileLogConfig *)fileConfig;
 
-// Enable output for system console
+/**
+ *  Enable output for system console. If true, SPLogManager will add DDASLLogger for you.
+ *  Do nothing If DDASLLogger is already added.
+ *
+ *  @param enable enable
+ */
 -(void)setASLDebug:(BOOL)enable;
-// Enable output for xcode console
+
+/**
+ *  Enable output for system console. If true, SPLogManager will add DDTTYLogger for you.
+ *  Do nothing If DDTTYLogger is already added.
+ *
+ *  @param enable enable
+ */
 -(void)setTTYDebug:(BOOL)enable;
-// Enable output for NSLogger
+
+/**
+ *  Enable output for system console. If true, SPLogManager will add DDNSLoggerLogger for you.
+ *  Do nothing If DDNSLoggerLogger is already added.
+ *
+ *  @param enable enable
+ */
 -(void)setNetworkDebug:(BOOL)enable;
 
+/**
+ *  Get current file log info
+ *
+ *  @return DDLogFileInfo provide the file path, log nsdata, and file name.
+ */
 - (DDLogFileInfo *)getCurrentLogFileInfo;
+/**
+ *  Get all rolling files data for mail.
+ */
 - (NSData *)getAllLog;
 
 - (NSString*)formatTypeToString:(SP_LOG_LEVEL)formatType;

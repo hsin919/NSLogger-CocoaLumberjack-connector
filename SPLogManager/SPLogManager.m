@@ -348,8 +348,8 @@ static SPLogManager *instance = nil;
     if(self)
     {
         self.maxFileNumber = 4;
-        self.rollingFreq = 60 * 1;
-        self.fileSize = 1024 ;
+        self.rollingFreq = 60 * 60;
+        self.fileSize = 1024 * 500;
     }
 	return self;
 }
