@@ -116,6 +116,7 @@ typedef enum {
 /**
  *  Enable output for system console. If true, SPLogManager will add DDNSLoggerLogger for you.
  *  Do nothing If DDNSLoggerLogger is already added.
+ *  NSLogger will connect to log server named SPLogManagerServer in LAN.
  *
  *  @param enable enable
  */
