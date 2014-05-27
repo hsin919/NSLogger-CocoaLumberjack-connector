@@ -45,3 +45,5 @@ Enable or disable the logger you want via UI or any procedure you want.
     [[SPLogManager getManager] setASLDebug:YES];
     [[SPLogManager getManager] setFileLogDebug:YES];
 ```
+# TODO #
+Add method for CompressingLogFileManager to clear all zip files.
