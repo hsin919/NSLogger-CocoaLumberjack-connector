@@ -30,6 +30,11 @@ extern int ddLogLevel;
 @property int fileSize;
 @end
 
+/**
+ *  SP_LOG_LEVEL
+ *  @see getLogLevel
+ *  @see setLogLevel
+ */
 typedef enum {
     SP_LOG_OFF = 0,
     SP_LOG_ERROR,
@@ -42,7 +47,7 @@ typedef enum {
 
 
 /**
- *  OGLogManager can enable/disable DDTTYLogger , DDFileLogger , DDASLLogger , and DDNSLoggerLogger dynamically. OGLogManager will also remember previous debug configuration.
+ *  SPLogManager can enable/disable DDTTYLogger , DDFileLogger , DDASLLogger , and DDNSLoggerLogger dynamically. SPLogManager will also remember previous debug configuration.
  */
 @interface SPLogManager : NSObject
 
@@ -55,18 +60,26 @@ typedef enum {
 -(void)loadConfig;
 
 /**
+ *  @name Log level
+ */
+/**
  *  Get current log level
  *
+ *  @see setLogLevel
  *  @return Log level type
  */
 -(SP_LOG_LEVEL)getLogLevel;
 /**
  *  Dynamic log level setter.
  *
+ *  @see getLogLevel
  *  @param level Log level
  */
 -(void)setLogLevel:(SP_LOG_LEVEL)level;
 
+/**
+ *  @name File logger
+ */
 -(void)setFileLogDebug:(BOOL)enable;
 /**
  *  Set configuration for file logger. Default value are
@@ -78,6 +91,9 @@ typedef enum {
  */
 - (void)setFileLogConfig:(FileLogConfig *)fileConfig;
 
+/**
+ *  @name Cocoa Lumberjack Logger
+ */
 /**
  *  Enable output for system console. If true, SPLogManager will add DDASLLogger for you.
  *  Do nothing If DDASLLogger is already added.
@@ -95,6 +111,9 @@ typedef enum {
 -(void)setTTYDebug:(BOOL)enable;
 
 /**
+ *  @name NSLogger
+ */
+/**
  *  Enable output for system console. If true, SPLogManager will add DDNSLoggerLogger for you.
  *  Do nothing If DDNSLoggerLogger is already added.
  *
@@ -102,6 +121,9 @@ typedef enum {
  */
 -(void)setNetworkDebug:(BOOL)enable;
 
+/**
+ *  @name Email log
+ */
 /**
  *  Get current file log info
  *

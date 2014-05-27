@@ -1,0 +1,892 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>SPLogManager Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">SPLogManager </a></h1>
+				<a id="developerHome" href="../index.html">stupid_pencil</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">SPLogManager Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/getAllLog">&nbsp;&nbsp;&nbsp;&nbsp;- getAllLog</option>
+	
+	<option value="//api/name/getCurrentLogFileInfo">&nbsp;&nbsp;&nbsp;&nbsp;- getCurrentLogFileInfo</option>
+	
+	<option value="//api/name/getLogLevel">&nbsp;&nbsp;&nbsp;&nbsp;- getLogLevel</option>
+	
+	<option value="//api/name/loadConfig">&nbsp;&nbsp;&nbsp;&nbsp;- loadConfig</option>
+	
+	<option value="//api/name/setASLDebug:">&nbsp;&nbsp;&nbsp;&nbsp;- setASLDebug:</option>
+	
+	<option value="//api/name/setFileLogConfig:">&nbsp;&nbsp;&nbsp;&nbsp;- setFileLogConfig:</option>
+	
+	<option value="//api/name/setFileLogDebug:">&nbsp;&nbsp;&nbsp;&nbsp;- setFileLogDebug:</option>
+	
+	<option value="//api/name/setLogLevel:">&nbsp;&nbsp;&nbsp;&nbsp;- setLogLevel:</option>
+	
+	<option value="//api/name/setNetworkDebug:">&nbsp;&nbsp;&nbsp;&nbsp;- setNetworkDebug:</option>
+	
+	<option value="//api/name/setTTYDebug:">&nbsp;&nbsp;&nbsp;&nbsp;- setTTYDebug:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Log level">Log level</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Cocoa Lumberjack Logger">Cocoa Lumberjack Logger</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_NSLogger">NSLogger</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Email log">Email log</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getAllLog">getAllLog</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getCurrentLogFileInfo">getCurrentLogFileInfo</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getLogLevel">getLogLevel</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loadConfig">loadConfig</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setASLDebug:">setASLDebug:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setFileLogConfig:">setFileLogConfig:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setFileLogDebug:">setFileLogDebug:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setLogLevel:">setLogLevel:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setNetworkDebug:">setNetworkDebug:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setTTYDebug:">setTTYDebug:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="SPLogManager Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">SPLogManager Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">SPLogManager.h<br />SPLogManager.m</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>SPLogManager can enable/disable <a href="../Classes/DDTTYLogger.html">DDTTYLogger</a> , <a href="../Classes/DDFileLogger.html">DDFileLogger</a> , <a href="../Classes/DDASLLogger.html">DDASLLogger</a> , and DDNSLoggerLogger dynamically. SPLogManager will also remember previous debug configuration.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loadConfig">&ndash;&nbsp;loadConfig</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Log level" name="task_Log level"></a>
+						<h3 class="subsubtitle task-title">Log level</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getLogLevel">&ndash;&nbsp;getLogLevel</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setLogLevel:">&ndash;&nbsp;setLogLevel:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setFileLogDebug:">&ndash;&nbsp;setFileLogDebug:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setFileLogConfig:">&ndash;&nbsp;setFileLogConfig:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Cocoa Lumberjack Logger" name="task_Cocoa Lumberjack Logger"></a>
+						<h3 class="subsubtitle task-title">Cocoa Lumberjack Logger</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setASLDebug:">&ndash;&nbsp;setASLDebug:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setTTYDebug:">&ndash;&nbsp;setTTYDebug:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="NSLogger" name="task_NSLogger"></a>
+						<h3 class="subsubtitle task-title">NSLogger</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setNetworkDebug:">&ndash;&nbsp;setNetworkDebug:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Email log" name="task_Email log"></a>
+						<h3 class="subsubtitle task-title">Email log</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getCurrentLogFileInfo">&ndash;&nbsp;getCurrentLogFileInfo</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getAllLog">&ndash;&nbsp;getAllLog</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/getAllLog" title="getAllLog"></a>
+	<h3 class="subsubtitle method-title">getAllLog</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get all rolling files data for mail.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSData *)getAllLog</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Get all rolling files data for mail.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPLogManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getCurrentLogFileInfo" title="getCurrentLogFileInfo"></a>
+	<h3 class="subsubtitle method-title">getCurrentLogFileInfo</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get current file log info</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (DDLogFileInfo *)getCurrentLogFileInfo</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><a href="../Classes/DDLogFileInfo.html">DDLogFileInfo</a> provide the file path, log nsdata, and file name.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Get current file log info</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPLogManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getLogLevel" title="getLogLevel"></a>
+	<h3 class="subsubtitle method-title">getLogLevel</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get current log level</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (SP_LOG_LEVEL)getLogLevel</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Log level type</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Get current log level</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPLogManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/loadConfig" title="loadConfig"></a>
+	<h3 class="subsubtitle method-title">loadConfig</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Load previous log level, ASL logger, and other logger settings for you.
+You can also skip loadConfig &amp; setASLDebug, setTTYDebug, and setFileLogDebug manually everytime.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)loadConfig</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Load previous log level, ASL logger, and other logger settings for you.
+You can also skip loadConfig &amp; setASLDebug, setTTYDebug, and setFileLogDebug manually everytime.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPLogManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setASLDebug:" title="setASLDebug:"></a>
+	<h3 class="subsubtitle method-title">setASLDebug:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Enable output for system console. If true, SPLogManager will add <a href="../Classes/DDASLLogger.html">DDASLLogger</a> for you.
+Do nothing If <a href="../Classes/DDASLLogger.html">DDASLLogger</a> is already added.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setASLDebug:(BOOL)<em>enable</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>enable</em></dt>
+			<dd><p>enable</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Enable output for system console. If true, SPLogManager will add <a href="../Classes/DDASLLogger.html">DDASLLogger</a> for you.
+Do nothing If <a href="../Classes/DDASLLogger.html">DDASLLogger</a> is already added.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPLogManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setFileLogConfig:" title="setFileLogConfig:"></a>
+	<h3 class="subsubtitle method-title">setFileLogConfig:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set configuration for file logger. Default value are
+Max File Number: 4
+RollingFreq: 1 hr
+FileSize: 500KB;</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setFileLogConfig:(FileLogConfig *)<em>fileConfig</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>fileConfig</em></dt>
+			<dd><p>Data wrapper for maxFileNumber, rollingFreq(in second), and fileSize.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Set configuration for file logger. Default value are
+Max File Number: 4
+RollingFreq: 1 hr
+FileSize: 500KB;</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPLogManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setFileLogDebug:" title="setFileLogDebug:"></a>
+	<h3 class="subsubtitle method-title">setFileLogDebug:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>@name File logger</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setFileLogDebug:(BOOL)<em>enable</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>@name File logger</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPLogManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setLogLevel:" title="setLogLevel:"></a>
+	<h3 class="subsubtitle method-title">setLogLevel:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Dynamic log level setter.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setLogLevel:(SP_LOG_LEVEL)<em>level</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>level</em></dt>
+			<dd><p>Log level</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Dynamic log level setter.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/getLogLevel">- getLogLevel</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPLogManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setNetworkDebug:" title="setNetworkDebug:"></a>
+	<h3 class="subsubtitle method-title">setNetworkDebug:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Enable output for system console. If true, SPLogManager will add DDNSLoggerLogger for you.
+Do nothing If DDNSLoggerLogger is already added.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setNetworkDebug:(BOOL)<em>enable</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>enable</em></dt>
+			<dd><p>enable</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Enable output for system console. If true, SPLogManager will add DDNSLoggerLogger for you.
+Do nothing If DDNSLoggerLogger is already added.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPLogManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setTTYDebug:" title="setTTYDebug:"></a>
+	<h3 class="subsubtitle method-title">setTTYDebug:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Enable output for system console. If true, SPLogManager will add <a href="../Classes/DDTTYLogger.html">DDTTYLogger</a> for you.
+Do nothing If <a href="../Classes/DDTTYLogger.html">DDTTYLogger</a> is already added.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setTTYDebug:(BOOL)<em>enable</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>enable</em></dt>
+			<dd><p>enable</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Enable output for system console. If true, SPLogManager will add <a href="../Classes/DDTTYLogger.html">DDTTYLogger</a> for you.
+Do nothing If <a href="../Classes/DDTTYLogger.html">DDTTYLogger</a> is already added.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SPLogManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2014 stupid_pencil. All rights reserved. (Last updated: 2014-05-27)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

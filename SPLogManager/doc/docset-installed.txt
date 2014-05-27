@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/hsin919/Library/Developer/Shared/Documentation/DocSets/com.stupidpencil.splogmanager.SPLogManager.docset
+Time: 2014-05-26 15:53:46 +0000

@@ -1,0 +1,4 @@
+*.xcuserdatad
+Pods/
+SPLogManager.xcworkspace
+
