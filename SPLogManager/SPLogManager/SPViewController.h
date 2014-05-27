@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MFMailComposeViewController.h>
 
-@interface SPViewController : UIViewController<MFMailComposeViewControllerDelegate>
+@interface SPViewController : UIViewController<MFMailComposeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *loggerTableView;
 @property (weak, nonatomic) IBOutlet UIPickerView *logLevelPicker;
 
 - (IBAction)testLogPrint:(id)sender;

@@ -236,6 +236,16 @@ static SPLogManager *instance = nil;
     self.fileLogger.rollingFrequency = fileConfig.rollingFreq;
 }
 
+-(BOOL)isFileLoggerEnable
+{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:LOG_DEBUG_FILE_CONFIG_KEY])
+    {
+        BOOL enable = [[NSUserDefaults standardUserDefaults] boolForKey:LOG_DEBUG_FILE_CONFIG_KEY];
+        return enable;
+    }
+    return NO;
+}
+
 // Enable output for system console
 -(void)setASLDebug:(BOOL)enable
 {
@@ -254,6 +264,16 @@ static SPLogManager *instance = nil;
         [DDLog removeLogger:[DDASLLogger sharedInstance]];
         _aslLogger = nil;
     }
+}
+
+-(BOOL)isASLEnable
+{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:LOG_DEBUG_ASL_KEY])
+    {
+        BOOL enable = [[NSUserDefaults standardUserDefaults] boolForKey:LOG_DEBUG_ASL_KEY];
+        return enable;
+    }
+    return NO;
 }
 // Enable output for xcode console
 -(void)setTTYDebug:(BOOL)enable
@@ -275,6 +295,16 @@ static SPLogManager *instance = nil;
     }
 }
 
+-(BOOL)isTTYEnable
+{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:LOG_DEBUG_TTY_KEY])
+    {
+        BOOL enable = [[NSUserDefaults standardUserDefaults] boolForKey:LOG_DEBUG_TTY_KEY];
+        return enable;
+    }
+    return NO;
+}
+
 -(void)setNetworkDebug:(BOOL)enable
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -293,6 +323,16 @@ static SPLogManager *instance = nil;
         [DDLog removeLogger:[DDNSLoggerLogger sharedInstance]];
         self.ddnsLogger = nil;
     }
+}
+
+-(BOOL)isNetworkEnable
+{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:LOG_DEBUG_NSLOGGER_KEY])
+    {
+        BOOL enable = [[NSUserDefaults standardUserDefaults] boolForKey:LOG_DEBUG_NSLOGGER_KEY];
+        return enable;
+    }
+    return NO;
 }
 
 - (DDLogFileInfo *)getCurrentLogFileInfo

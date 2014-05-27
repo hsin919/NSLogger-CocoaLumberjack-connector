@@ -14,12 +14,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[SPLogManager getManager] loadConfig];
-    
-    [[SPLogManager getManager] setTTYDebug:YES];
-    [[SPLogManager getManager] setASLDebug:YES];
-    [[SPLogManager getManager] setFileLogDebug:YES];
-    [[SPLogManager getManager] setNetworkDebug:YES];
-    
     return YES;
 }
 							

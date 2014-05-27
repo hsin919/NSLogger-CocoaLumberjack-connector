@@ -90,6 +90,7 @@ typedef enum {
  *  @param fileConfig Data wrapper for maxFileNumber, rollingFreq(in second), and fileSize.
  */
 - (void)setFileLogConfig:(FileLogConfig *)fileConfig;
+- (BOOL)isFileLoggerEnable;
 
 /**
  *  @name Cocoa Lumberjack Logger
@@ -101,6 +102,7 @@ typedef enum {
  *  @param enable enable
  */
 -(void)setASLDebug:(BOOL)enable;
+-(BOOL)isASLEnable;
 
 /**
  *  Enable output for system console. If true, SPLogManager will add DDTTYLogger for you.
@@ -109,6 +111,7 @@ typedef enum {
  *  @param enable enable
  */
 -(void)setTTYDebug:(BOOL)enable;
+-(BOOL)isTTYEnable;
 
 /**
  *  @name NSLogger
@@ -121,6 +124,7 @@ typedef enum {
  *  @param enable enable
  */
 -(void)setNetworkDebug:(BOOL)enable;
+-(BOOL)isNetworkEnable;
 
 /**
  *  @name Email log
