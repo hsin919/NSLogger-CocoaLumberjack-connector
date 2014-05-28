@@ -12,7 +12,6 @@
 #import "DDTTYLogger.h"
 #import "DDASLLogger.h"
 #import "DDNSLoggerLogger.h"
-#import "CompressingLogFileManager.h"
 
 extern int ddLogLevel;
 
