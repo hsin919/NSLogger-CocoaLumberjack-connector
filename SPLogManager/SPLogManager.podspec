@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "SPLogManager"
-  s.version      = "0.0.1"
+  s.version      = "1.3"
   s.summary      = "A simple log manager support file logger and dynamic log level setting."
 
   s.description  = <<-DESC
@@ -34,8 +34,8 @@ Pod::Spec.new do |s|
   #  Specify the location from where the source should be retrieved.
   #  Supports git, hg, bzr, svn and HTTP.
   #
-  s.source       = { :git => "https://github.com/hsin919/NSLogger-CocoaLumberjack-connector.git", :commit => 'a484b1006acdf91d76159d93f8fcc4a3fd0f6afa' }
-  #s.source       = { :git => "https://github.com/hsin919/NSLogger-CocoaLumberjack-connector.git", :tag => "0.0.1" }
+  #s.source       = { :git => "https://github.com/hsin919/NSLogger-CocoaLumberjack-connector.git", :commit => 'a484b1006acdf91d76159d93f8fcc4a3fd0f6afa' }
+  s.source       = { :git => "https://github.com/hsin919/NSLogger-CocoaLumberjack-connector.git", :tag => "1.3" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
