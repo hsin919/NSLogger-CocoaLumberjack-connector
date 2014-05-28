@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
   #  Specify the location from where the source should be retrieved.
   #  Supports git, hg, bzr, svn and HTTP.
   #
-  s.source       = { :git => "https://github.com/hsin919/NSLogger-CocoaLumberjack-connector.git", :commit => 'e67398426fab61908730428675257b730d12a62d' }
+  s.source       = { :git => "https://github.com/hsin919/NSLogger-CocoaLumberjack-connector.git", :commit => 'a484b1006acdf91d76159d93f8fcc4a3fd0f6afa' }
   #s.source       = { :git => "https://github.com/hsin919/NSLogger-CocoaLumberjack-connector.git", :tag => "0.0.1" }
 
 
