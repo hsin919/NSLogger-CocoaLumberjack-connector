@@ -1,4 +1,5 @@
 *.xcuserdatad
+*.xcuserstate
 Pods/
 SPLogManager.xcworkspace
 
