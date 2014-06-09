@@ -161,7 +161,7 @@ static SPLogManager *instance = nil;
     NSInteger logLevel = [[NSUserDefaults standardUserDefaults] integerForKey:LOG_LEVEL_KEY];
     if (logLevel)
     {
-        ddLogLevel = logLevel;
+        ddLogLevel = (int)logLevel;
         [self printLogLevel];
     }
     
