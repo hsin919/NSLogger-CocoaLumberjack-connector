@@ -11,6 +11,4 @@ pod 'CocoaLumberjack'
 # UI
 
 # Testing
-target :SPLogManagerTests, :exclusive => true do
-   pod 'Kiwi/XCTest'
-end
+
