@@ -250,11 +250,13 @@
 
 #pragma mark - UIPickerViewDelegate
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [[SPLogManager getManager] formatTypeToString:row];
+    SP_LOG_LEVEL logLevel = (int)row;
+    return [[SPLogManager getManager] formatTypeToString:logLevel];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    [[SPLogManager getManager] setLogLevel:row];
+    SP_LOG_LEVEL logLevel = (int)row;
+    [[SPLogManager getManager] setLogLevel:logLevel];
 }
 @end

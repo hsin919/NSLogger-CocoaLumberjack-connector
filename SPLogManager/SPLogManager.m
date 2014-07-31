@@ -7,6 +7,7 @@
 //
 
 #import "SPLogManager.h"
+#import "CompressingLogFileManager.h"
 
 #define LOG_LEVEL_KEY @"prefsLogLevel"
 #define LOG_DEBUG_ASL_KEY @"LOG_DEBUG_ASL_KEY"
@@ -191,9 +192,9 @@ static SPLogManager *instance = nil;
 
 - (void)initFileLogger
 {
-    //CompressingLogFileManager *logFileManager = [[CompressingLogFileManager alloc] init];
+    CompressingLogFileManager *logFileManager = [[CompressingLogFileManager alloc] init];
     
-    self.fileLogger = [[DDFileLogger alloc] init];//[[DDFileLogger alloc] initWithLogFileManager:logFileManager];
+    self.fileLogger = [[DDFileLogger alloc] initWithLogFileManager:logFileManager];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     FileLogConfig* config = [NSKeyedUnarchiver unarchiveObjectWithData:[userDefaults objectForKey:LOG_DEBUG_FILE_CONFIG_KEY]];
     if(config)
@@ -240,7 +241,7 @@ static SPLogManager *instance = nil;
 {
     if([[NSUserDefaults standardUserDefaults] objectForKey:LOG_DEBUG_FILE_CONFIG_KEY])
     {
-        BOOL enable = [[NSUserDefaults standardUserDefaults] boolForKey:LOG_DEBUG_FILE_CONFIG_KEY];
+        BOOL enable = [[NSUserDefaults standardUserDefaults] boolForKey:LOG_DEBUG_FILE_KEY];
         return enable;
     }
     return NO;

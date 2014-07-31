@@ -15,10 +15,18 @@
 
 extern int ddLogLevel;
 
+#undef LOG_ASYNC_ENABLED
+
 #define DEFAULT_ASL_DEBUG NO
 #define DEFAULT_FILE_DEBUG NO
 #define DEFAULT_TTY_DEBUG YES
 #define DEFAULT_DDNS_DEBUG NO
+
+#ifdef DEBUG
+#define LOG_ASYNC_ENABLED NO
+#else
+#define LOG_ASYNC_ENABLED YES
+#endif
 
 /**
  *  A class for file logger configuration wrapper.
