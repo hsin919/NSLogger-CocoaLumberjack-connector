@@ -92,6 +92,7 @@
     if (count == 0)
     {
         // Nothing to compress
+        upToDate = YES;
         return;
     }
     
@@ -116,7 +117,7 @@
 - (void)compressionDidSucceed:(DDLogFileInfo *)logFile
 {
     NSLogVerbose(@"CompressingLogFileManager: compressionDidSucceed: %@", logFile.fileName);
-
+    
     self.isCompressing = NO;
     
     [self compressNextLogFile];
@@ -191,10 +192,15 @@
     
     NSString *tempOutputFilePath = [logFile tempFilePathByAppendingPathExtension:@"gz"];
     
-    if ([[NSFileManager defaultManager] fileExistsAtPath:tempOutputFilePath])
-    {
-        [[NSFileManager defaultManager] createFileAtPath:tempOutputFilePath contents:nil attributes:nil];
-    }
+#if TARGET_OS_IPHONE
+    // We use the same protection as the original file.  This means that it has the same security characteristics.
+    // Also, if the app can run in the background, this means that it gets
+    // NSFileProtectionCompleteUntilFirstUserAuthentication so that we can do this compression even with the
+    // device locked.  c.f. DDFileLogger.doesAppRunInBackground.
+    NSString* protection = logFile.fileAttributes[NSFileProtectionKey];
+    NSDictionary* attributes = protection == nil ? nil : @{NSFileProtectionKey: protection};
+    [[NSFileManager defaultManager] createFileAtPath:tempOutputFilePath contents:nil attributes:attributes];
+#endif
     
     // STEP 2 & 3
     
